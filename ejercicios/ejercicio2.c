@@ -4,20 +4,27 @@
 int main() {
     int m, n;
     printf("Ingrese el número de filas: ");
-    
+    scanf("%d", &m);
     printf("Ingrese el número de columnas: ");
-    
+    scanf("%d", &n);
 
     int *matrix = (int *)calloc(m * n, sizeof(int));
     if (matrix == NULL) {
         printf("Error: No se pudo asignar memoria.\n");
-        
+       
     }
 
     printf("Matriz inicializada con ceros:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            
+            printf("[%d][%d]: %d ", i, j, (matrix[i+j]));
+        }
+        printf("\n");
+    }
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("ingresa [%d][%d]:", i, j);
+            scanf("%d", (matrix[i+j]));
         }
         printf("\n");
     }
