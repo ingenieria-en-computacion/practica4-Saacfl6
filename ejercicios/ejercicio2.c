@@ -17,14 +17,15 @@ int main() {
     printf("Matriz inicializada con ceros:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            printf("[%d][%d]: %d ", i, j, (matrix[i+j]));
+            printf("[%d][%d]: %d ", i, j, (matrix[i*n+j]));
         }
         printf("\n");
     }
+
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
             printf("ingresa [%d][%d]:", i, j);
-            scanf("%d", (matrix[i+j]));
+            scanf("%d", &matrix[i*n+j]);
         }
         printf("\n");
     }
@@ -32,12 +33,19 @@ int main() {
     printf("Ingrese las coordenadas (fila, columna) y el valor para modificar (ej. 1 2 5):\n");
     int row, col, value;
     //lee los varlores solicitados
+    scanf("%d %d %d", &row, &col, &value);
     matrix[(row-1) * n + (col-1)] = value;
+
+    if (row >= 0 && row < m && col >= 0 && col < n) {
+        matrix[row * n + col] = value;
+    } else {
+        printf("Coordenadas no validas\n");
+    }
 
     printf("Matriz actualizada:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            
+            printf("%d ", matrix[i * n + j]);
         }
         printf("\n");
     }
